@@ -1,9 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:managerr/pages/dashboard.dart';
+import 'package:managerr/pages/login_or_register.dart';
 import 'package:managerr/pages/login_page.dart';
 
 class AuthPage extends StatelessWidget {
@@ -12,17 +10,17 @@ class AuthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: StreamBuilder<User?>(
-        stream: FirebaseAuth,
+      body: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
-          //user logged in
+          //logged in
           if (snapshot.hasData) {
-            return Dashboard();
-          } 
-          //not logged in
-          
-          else {
-            return LoginPage();
+            print("HasData");
+            return DashBoard();
+          } else {
+            //not logged in
+            print("NoData");
+            return LoginOrRegisterPage();
           }
         },
       ),
