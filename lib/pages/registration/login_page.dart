@@ -9,7 +9,7 @@ import 'package:managerr/widgets/text_field.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
-  LoginPage({super.key, this.onTap});
+  const LoginPage({super.key, this.onTap});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -41,10 +41,8 @@ class _LoginPageState extends State<LoginPage> {
     } on FirebaseException catch (e) {
       Navigator.pop(context);
       if (e.code == 'user-not-found') {
-        print("User Not Found");
         showErrorMessage(e.code);
       } else if (e.code == 'wrong-password') {
-        print("Wrong Pass");
         showErrorMessage(e.code);
       }
     }
@@ -177,7 +175,7 @@ class _LoginPageState extends State<LoginPage> {
                       onTap: () {
                         AuthService().signInWithGoogle();
                       },
-                      child: SquareTile(),
+                      child: const SquareTile(),
                     ), //google button
                   ],
                 ),

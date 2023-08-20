@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:managerr/services/auth_service.dart';
 
 class SquareTile extends StatelessWidget {
   const SquareTile({super.key});

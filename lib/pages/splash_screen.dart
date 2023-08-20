@@ -1,8 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:managerr/pages/login_page.dart';
 import 'package:managerr/widgets/auth_page.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => AuthPage(),
+            builder: (context) => const AuthPage(),
           ));
     });
   }

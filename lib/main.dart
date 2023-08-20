@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:managerr/widgets/auth_page.dart';
+import 'package:managerr/models/note_data.dart';
+import 'package:managerr/pages/splash_screen.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await Hive.initFlutter();
+
+  //open hive box
+
+  await Hive.openBox('note_database');
+
   runApp(const MyApp());
 }
 
@@ -17,13 +27,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return ChangeNotifierProvider(
+      create: (context) => NoteData(),
+      builder: (context, child) => const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: SplashScreen(),
       ),
-      home: const AuthPage(),
     );
   }
 }

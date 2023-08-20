@@ -8,7 +8,7 @@ import 'package:managerr/widgets/text_field.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
-  RegisterPage({super.key, this.onTap});
+  const RegisterPage({super.key, this.onTap});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -46,10 +46,8 @@ class _RegisterPageState extends State<RegisterPage> {
     } on FirebaseException catch (e) {
       Navigator.pop(context);
       if (e.code == 'user-not-found') {
-        print("User Not Found");
         showErrorMessage(e.code);
       } else if (e.code == 'wrong-password') {
-        print("Wrong Pass");
         showErrorMessage(e.code);
       }
     }

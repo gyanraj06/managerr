@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:managerr/pages/dashboard.dart';
-import 'package:managerr/pages/login_or_register.dart';
-import 'package:managerr/pages/login_page.dart';
+import 'package:managerr/pages/notes/dashboard.dart';
+import 'package:managerr/pages/registration/login_or_register.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
@@ -15,12 +14,10 @@ class AuthPage extends StatelessWidget {
         builder: (context, snapshot) {
           //logged in
           if (snapshot.hasData) {
-            print("HasData");
             return DashBoard();
           } else {
             //not logged in
-            print("NoData");
-            return LoginOrRegisterPage();
+            return const LoginOrRegisterPage();
           }
         },
       ),
